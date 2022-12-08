@@ -37,7 +37,7 @@
                   </div>
                   <div class="card-body">
                     <!-- Registration form-->
-                    <form>
+                    <form action="/register" method="post">
                       <!-- Form Row-->
                       <div class="form-row">
                         <div class="col-md-6">
