@@ -38,6 +38,7 @@
                   <div class="card-body">
                     <!-- Registration form-->
                     <form action="/register" method="post">
+                      @csrf
                       <!-- Form Row-->
                       <div class="form-row">
                         <div class="col-md-6">
@@ -45,7 +46,7 @@
                             <label for="exampleFormControlSelect1">Role</label
                             ><select
                               class="form-control"
-                              id="exampleFormControlSelect1"
+                              id="exampleFormControlSelect1" name="role"
                             >
                               <option>Customer</option>
                               <option>Barber</option>
@@ -63,6 +64,7 @@
                               class="form-control py-4"
                               id="inputFirstName"
                               type="text"
+                              name="fname"
                               placeholder="Enter first name"
                             />
                           </div>
@@ -77,6 +79,7 @@
                               class="form-control py-4"
                               id="inputLastName"
                               type="text"
+                              name="lname"
                               placeholder="Enter last name"
                             />
                           </div>
@@ -91,6 +94,7 @@
                           class="form-control py-4"
                           id="inputEmailAddress"
                           type="email"
+                          name="email"
                           aria-describedby="emailHelp"
                           placeholder="Enter email address"
                         />
@@ -107,6 +111,7 @@
                               class="form-control py-4"
                               id="inputPassword"
                               type="password"
+                              name="password"
                               placeholder="Enter password"
                             />
                           </div>
@@ -128,11 +133,7 @@
                       </div>
                       <!-- Form Group (create account submit)-->
                       <div class="form-group mt-4 mb-0">
-                        <a
-                          class="btn btn-primary btn-block"
-                          href="auth-login-basic.html"
-                          >Create Account</a
-                        >
+                        <input class="btn btn-primary btn-block" type="submit" value="Create Account">
                       </div>
                     </form>
                   </div>

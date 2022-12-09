@@ -37,7 +37,8 @@
                   </div>
                   <div class="card-body">
                     <!-- Login form-->
-                    <form>
+                    <form action="/login" method="post">
+                      @csrf
                       <!-- Form Group (email address)-->
                       <div class="form-group">
                         <label class="small mb-1" for="inputEmailAddress"
@@ -47,6 +48,7 @@
                           class="form-control py-4"
                           id="inputEmailAddress"
                           type="email"
+                          name="email"
                           placeholder="Enter email address"
                         />
                       </div>
@@ -59,6 +61,7 @@
                           class="form-control py-4"
                           id="inputPassword"
                           type="password"
+                          name="password"
                           placeholder="Enter password"
                         />
                       </div>
@@ -68,7 +71,8 @@
                       <div
                         class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"
                       >
-                        <a class="btn btn-primary" href="index.html">Login</a>
+                        <input class="btn btn-primary" type="submit" value="Login">
+                        {{-- <a class="btn btn-primary" href="index.html">Login</a> --}}
                       </div>
                     </form>
                   </div>

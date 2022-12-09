@@ -1,6 +1,3 @@
-<?php 
-  session_start();
-?>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,14 +26,19 @@
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/catalog">Catalogue</a></li>
-            <?php 
-            if (isset($_SESSION["useruid"])) {
+            @guest
+              <li><a href='/login'>Login</a></li>
+            @else
+              <li><a href='/logout'>Logout</a></li>
+            @endguest
+            
+            {{-- if (isset($_SESSION["useruid"])) {
               echo "<li><a href='includes/logout.inc.php'>LOG OUT</a></li>";
             }
             else {
               echo "<li><a href='/login'>Login</a></li>";
-            }
-            ?>
+            } --}}
+            
           </ul>
         </div>
         <i class="fas fa-bars" onclick="showMenu()"></i>
@@ -44,11 +46,15 @@
       <div class="text-box">
         <h1>Get a Good Cut.</h1>
         <p>Because hair is the crown of every person.</p>
-        <?php 
-            if (isset($_SESSION["useruid"])) {
+        @guest
+        @else
+          <p>Hello there, {{ Auth::user()->fname }}</p>
+        @endguest
+        
+            {{-- if (isset($_SESSION["useruid"])) {
               echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
-            }
-            ?>
+            } --}}
+            
         <a href="/visit" class="hero-btn">Visit Us To Know More</a>
       </div>
     </section>
