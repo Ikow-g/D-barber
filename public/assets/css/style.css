@@ -547,6 +547,16 @@ h3 {
     margin-right: 0;
 }
 
+#dropdown-menu {
+    background-color: #f55500;
+}
+
+#dropdown-menu li {
+    display: block;
+    text-align: left;
+    padding: 0;
+}
+
 /* .name {
   padding: 14px 10px 14px 50px;
   width: 100%;
