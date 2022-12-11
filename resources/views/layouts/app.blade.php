@@ -22,7 +22,9 @@
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8d774616-db7c-4e02-96cc-529007c6d5bb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
   <body>
     <section class="sub-header">
@@ -36,24 +38,39 @@
             <li><a href="/contact">Contact</a></li>
             <li><a href="/catalog">Catalogue</a></li>
             
-            <?php 
-            if (isset($_SESSION["useruid"])) {
+            @guest
+              <li><a href='/login'>Login</a></li>
+            @else
+              <li class="nav-item dropdown">
+                <a class="nav-links dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ Auth::user()->fname }}
+                </a>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </li>
+            @endguest
+
+            {{-- if (isset($_SESSION["useruid"])) {
               echo "<li><a href='includes/logout.inc.php'>LOG OUT</a></li>";
             }
             else {
               echo "<li><a href='/login'>Login</a></li>";
-            }
-            ?>
+            } --}}
           </ul>
         </div>
         <i class="fas fa-bars" onclick="showMenu()"></i>
       </nav>
       <h1>{{ $title }}</h1>
-      <?php 
-            if (isset($_SESSION["useruid"])) {
+        @guest
+        @else
+          <p>Hello there, {{ Auth::user()->fname }}</p>
+        @endguest
+            {{-- if (isset($_SESSION["useruid"])) {
               echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
-            }
-            ?>
+            } --}}
     </section>
 
    @yield('content')
